@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #D97706;
+  --color-primary-dark: #B45309;
+  --color-primary-light: #FBBF24;
+  --color-secondary: #2F855A;
+  --color-secondary-dark: #276749;
+  --color-secondary-light: #48BB78;
+  --color-accent: #0F766E;
+  --color-accent-dark: #0D5D56;
+  --color-background: #FFF7ED;
+  --color-surface: #FFFFFF;
+  --color-text: #1F2937;
+  --color-text-light: #6B7280;
+  --color-border: #E5E7EB;
+  --color-border-light: #F3F4F6;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 10px 25px -5px rgb(217 119 6 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.04);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Typography scale */
+.text-display { @apply text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight; }
+.text-h1 { @apply text-2xl md:text-3xl font-bold tracking-tight text-text; }
+.text-h2 { @apply text-xl md:text-2xl font-semibold tracking-tight text-text; }
+.text-h3 { @apply text-lg font-semibold text-text; }
+.text-body { @apply text-sm md:text-base text-text leading-relaxed; }
+.text-caption { @apply text-xs text-text-light; }
+.text-label { @apply text-sm font-medium text-text; }
+
+/* Layout utilities */
+.page-container { @apply max-w-[1280px] mx-auto w-full px-4 sm:px-6; }
+.page-section { @apply space-y-6; }
+.section-gap { @apply mb-6 md:mb-8; }
+
+/* Card system */
+.card {
+  background-color: var(--color-surface);
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border-light);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+.card-interactive {
+  background-color: var(--color-surface);
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border-light);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+.card-interactive:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Form inputs */
+.input-base {
+  @apply w-full px-4 py-2.5 rounded-lg border border-border bg-surface text-text text-sm;
+  @apply placeholder:text-text-light/70;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary;
+  @apply transition-all duration-200;
+}
+.input-error {
+  @apply border-red-400 focus:ring-red-200 focus:border-red-400;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.75rem;
+  z-index: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-fade-in { animation: fadeIn 0.4s ease-out; }
+.animate-slide-up { animation: slideUp 0.5s ease-out; }
+.animate-pulse-slow { animation: pulse-slow 2s ease-in-out infinite; }
+
+/* Gradient backgrounds */
+.gradient-hero {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 40%, #ECFDF5 100%);
+}
+.gradient-primary {
+  background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+}
